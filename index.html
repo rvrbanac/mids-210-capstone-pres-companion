@@ -115,7 +115,8 @@
             transition: opacity 1s ease;
         }
 
-        .stage2.active .slide-video {
+        #stage2.active .slide-video,
+        #stage4.active .slide-video {
             opacity: 1;
         }
 
@@ -134,7 +135,8 @@
         }
 
         /* Morphing animation trigger */
-        .stage2.active .gui-video-small {
+        #stage2.active .gui-video-small,
+        #stage4.active .gui-video-small {
             opacity: 1;
             transform: scale(1) translateX(0);
         }
@@ -203,7 +205,8 @@
                 transform: scale(1);
             }
 
-            .stage2.active .gui-video-small {
+            #stage2.active .gui-video-small,
+            #stage4.active .gui-video-small {
                 transform: scale(1);
             }
         }
@@ -734,7 +737,7 @@
                     <div class="slide-video" id="slideVideoContainer">
                         <div class="demo-video">
                             <div class="video-container">
-                                <video id="video2" muted playsinline autoplay>
+                                <video id="video2" muted playsinline autoplay preload="auto">
                                     <source src="slideshow-with-gui.mp4" type="video/mp4">
                                     Your browser doesn't support video playback.
                                 </video>
@@ -776,13 +779,8 @@
                 </div>
                 <div class="text-side">
                     <div class="demo-text fade-in-text">
-                        <h3>🎯 Question Mode Activated</h3>
-                        <p>When you say "let's enter Question Mode," the system automatically detects questions from your speech and retrieves answers from your document database using RAG.</p>
-                        <div class="demo-features">
-                            <div class="demo-feature-item">✓ Instant question detection from speech</div>
-                            <div class="demo-feature-item">✓ RAG queries document database</div>
-                            <div class="demo-feature-item">✓ Answers prepared for display</div>
-                        </div>
+                        <h3>Question Mode</h3>
+                        <p>The system automatically detects questions and retrieves answers from your document database using RAG.</p>
                     </div>
                 </div>
             </div>
@@ -795,7 +793,7 @@
                     <div class="slide-video" id="qaSlideVideoContainer">
                         <div class="demo-video">
                             <div class="video-container">
-                                <video id="video4" muted playsinline autoplay>
+                                <video id="video4" muted playsinline autoplay preload="auto">
                                     <source src="qa-slideshow-with-gui.mp4" type="video/mp4">
                                     Your browser doesn't support video playback.
                                 </video>
