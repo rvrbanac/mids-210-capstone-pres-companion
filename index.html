@@ -46,13 +46,22 @@
         /* Stage 1: Side-by-side layout */
         .stage-content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1.2fr 1fr;
             gap: 4rem;
             align-items: center;
             margin-bottom: 4rem;
         }
 
-        .video-side, .text-side {
+        .video-side {
+            position: relative;
+        }
+        
+        .video-side .demo-video {
+            transform: scale(1.3);
+            transform-origin: center;
+        }
+
+        .text-side {
             position: relative;
         }
 
@@ -713,11 +722,6 @@
                     <div class="demo-text fade-in-text">
                         <h3>Real-Time Speech Analysis</h3>
                         <p>Presentation Companion analyzes your speech in real-time, assessing when your slides should flip based on semantic similarity and contextual understanding.</p>
-                        <div class="demo-features">
-                            <div class="demo-feature-item">✓ CLIP embeddings compare speech to slides</div>
-                            <div class="demo-feature-item">✓ 15-second rolling window analysis</div>
-                            <div class="demo-feature-item">✓ Smart heuristics prevent false triggers</div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -751,12 +755,7 @@
                 <div class="text-below">
                     <div class="demo-text fade-in-text">
                         <h3>Automatic Slide Navigation</h3>
-                        <p>Once you finish talking about a slide and move on to the next topic, your presentation automatically advances—no clicks, no commands, just natural flow.</p>
-                        <div class="demo-features">
-                            <div class="demo-feature-item">✓ 0.6 second stability timer prevents flicker</div>
-                            <div class="demo-feature-item">✓ Forward-only navigation maintains flow</div>
-                            <div class="demo-feature-item">✓ 72% accuracy in real presentations</div>
-                        </div>
+                        <p>Your presentation automatically advances—no clicks, no commands, just natural flow.</p>
                     </div>
                 </div>
             </div>
