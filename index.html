@@ -807,21 +807,18 @@
         
         <div class="features-grid fade-in">
             <div class="feature-card">
-                <div class="feature-icon">🎯</div>
                 <h3>Contextual Navigation</h3>
                 <p>Automatically advances slides based on semantic understanding of your speech. No clickers, no "next slide please"—just natural conversation.</p>
             </div>
             
             <div class="feature-card">
-                <div class="feature-icon">🧠</div>
                 <h3>RAG-Powered Q&A</h3>
                 <p>Answers technical questions by retrieving information from your document database in real-time. Never get caught without data.</p>
             </div>
             
             <div class="feature-card">
-                <div class="feature-icon">📊</div>
                 <h3>Dynamic Slides</h3>
-                <p>Creates live Q&A transcriptions that appear on slides letter-by-letter. Improves accessibility and audience retention.</p>
+                <p>Q&A sessions are transcribed in real-time. Improves accessibility and audience retention.</p>
             </div>
         </div>
     </section>
@@ -829,7 +826,7 @@
     <!-- Technology Section -->
     <section id="tech">
         <h2 class="section-title">Technology Stack</h2>
-        <p class="section-subtitle">Built with cutting-edge AI and multimodal embeddings</p>
+        <p class="section-subtitle">Multimodal embeddings combined with AI</p>
         
         <div class="features-grid fade-in">
             <div class="feature-card">
@@ -843,8 +840,8 @@
             </div>
             
             <div class="feature-card">
-                <h3>⚡ Smart Heuristics</h3>
-                <p>Priority-based decision system with forward-only navigation, stability timers, and continuation phrase detection—achieving <strong>72% accuracy</strong>.</p>
+                <h3>⚡ Contextual Nuance Recognition</h3>
+                <p>An added LLM decision layer understands the nuance and context of your speech, distinguishing between brief mentions and deep topic coverage to make intelligent navigation decisions.</p>
             </div>
         </div>
 
@@ -871,7 +868,7 @@
                 <h3>Jonathan</h3>
                 <p class="team-role">Engineering, Project Management, Infrastructure</p>
                 <p class="team-bio">Professional Background: Aerospace Engineering</p>
-                <p class="team-email">jonathan.l.yi@berkeley.edu</p>
+                <p class="team-email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0c6663626d78646d6222602275654c6e697e676960697522696879">[email&#160;protected]</a></p>
             </div>
             
             <div class="team-member">
@@ -879,7 +876,7 @@
                 <h3>Ross Vrbanac</h3>
                 <p class="team-role">Model Tuning, Engineering, Infrastructure</p>
                 <p class="team-bio">Professional Background: Institutional Investments</p>
-                <p class="team-email">rvrbanac@berkeley.edu</p>
+                <p class="team-email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="374541455556595654775552455c525b524e19525342">[email&#160;protected]</a></p>
             </div>
         </div>
     </section>
@@ -892,7 +889,7 @@
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Fade in animation on scroll
         const observerOptions = {
             threshold: 0.1,
@@ -1058,13 +1055,4 @@
         });
 
         document.querySelectorAll('.indicator[data-stage="4"]').forEach(indicator => {
-            indicator.addEventListener('click', () => {
-                document.getElementById('stage4').classList.add('active');
-                document.getElementById('stage3').classList.remove('active');
-                indicator.classList.add('active');
-                document.querySelector('.indicator[data-stage="3"]').classList.remove('active');
-            });
-        });
-    </script>
-</body>
-</html>
+            indicator.addEventListener('click', () => 
