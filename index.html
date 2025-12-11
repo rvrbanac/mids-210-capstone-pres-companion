@@ -744,7 +744,7 @@
             <!-- Stage 1: GUI Only -->
             <div id="stage1" class="demo-stage active">
                 <div class="video-container-large">
-                    <video id="video1" muted playsinline preload="auto">
+                    <video id="video1" muted playsinline autoplay loop preload="auto">
                         <source src="gui-only-demo.mp4" type="video/mp4">
                         Your browser doesn't support video playback.
                     </video>
@@ -781,7 +781,7 @@
             <!-- Stage 3: Q&A GUI Only -->
             <div id="stage3" class="demo-stage active">
                 <div class="video-container-large">
-                    <video id="video3" muted playsinline preload="auto">
+                    <video id="video3" muted playsinline autoplay loop preload="auto">
                         <source src="qa-gui-only.mp4" type="video/mp4">
                         Your browser doesn't support video playback.
                     </video>
@@ -1024,65 +1024,6 @@
 
         if (playSequence2Btn) {
             playSequence2Btn.addEventListener('click', playSequence2);
-        }
-
-        // Auto-advance when videos end
-        if (video1) {
-            video1.addEventListener('ended', () => {
-                // Switch from stage 1 to stage 2
-                document.getElementById('stage1').classList.remove('active');
-                document.getElementById('stage2').classList.add('active');
-                document.querySelector('.indicator[data-stage="1"]').classList.remove('active');
-                document.querySelector('.indicator[data-stage="2"]').classList.add('active');
-                if (video2) video2.play().catch(e => console.log(e));
-            });
-        }
-
-        if (video2) {
-            video2.addEventListener('ended', () => {
-                // Loop back to stage 1
-                document.getElementById('stage2').classList.remove('active');
-                document.getElementById('stage1').classList.add('active');
-                document.querySelector('.indicator[data-stage="2"]').classList.remove('active');
-                document.querySelector('.indicator[data-stage="1"]').classList.add('active');
-                if (video1) {
-                    video1.currentTime = 0;
-                    video1.play().catch(e => console.log(e));
-                }
-            });
-        }
-
-        if (video3) {
-            video3.addEventListener('ended', () => {
-                // Switch from stage 3 to stage 4
-                document.getElementById('stage3').classList.remove('active');
-                document.getElementById('stage4').classList.add('active');
-                document.querySelector('.indicator[data-stage="3"]').classList.remove('active');
-                document.querySelector('.indicator[data-stage="4"]').classList.add('active');
-                if (video4) video4.play().catch(e => console.log(e));
-            });
-        }
-
-        if (video4) {
-            video4.addEventListener('ended', () => {
-                // Loop back to stage 3
-                document.getElementById('stage4').classList.remove('active');
-                document.getElementById('stage3').classList.add('active');
-                document.querySelector('.indicator[data-stage="4"]').classList.remove('active');
-                document.querySelector('.indicator[data-stage="3"]').classList.add('active');
-                if (video3) {
-                    video3.currentTime = 0;
-                    video3.play().catch(e => console.log(e));
-                }
-            });
-        }
-
-        // Start both sequences playing on page load
-        if (video1) {
-            video1.play().catch(e => console.log(e));
-        }
-        if (video3) {
-            video3.play().catch(e => console.log(e));
         }
 
         // Indicator click handlers for manual navigation
