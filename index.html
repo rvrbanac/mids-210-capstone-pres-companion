@@ -721,6 +721,15 @@
                 <p>Presentation Companion analyzes your speech in real-time. Your presentation automatically advances—no clicks, no commands, just natural flow.</p>
             </div>
 
+            <!-- Controls for Sequence 1 - MOVED TO TOP -->
+            <div class="sequence-controls">
+                <button id="playSequence1" class="btn btn-primary">▶ Play Navigation Demo</button>
+                <div class="sequence-indicators">
+                    <div class="indicator active" data-sequence="1" data-stage="1"></div>
+                    <div class="indicator" data-sequence="1" data-stage="2"></div>
+                </div>
+            </div>
+
             <!-- Stage 1: GUI Only -->
             <div id="stage1" class="demo-stage active">
                 <div class="video-container-large">
@@ -740,15 +749,6 @@
                     </video>
                 </div>
             </div>
-
-            <!-- Controls for Sequence 1 -->
-            <div class="sequence-controls">
-                <button id="playSequence1" class="btn btn-primary">▶ Play Navigation Demo</button>
-                <div class="sequence-indicators">
-                    <div class="indicator active" data-sequence="1" data-stage="1"></div>
-                    <div class="indicator" data-sequence="1" data-stage="2"></div>
-                </div>
-            </div>
         </div>
 
         <!-- SEQUENCE 2: QUESTION MODE -->
@@ -756,6 +756,15 @@
             <div class="sequence-text">
                 <h3>Question Mode</h3>
                 <p>Questions are automatically detected and answers are retrieved from your document database using RAG. Q&A sessions can be transcribed in real-time.</p>
+            </div>
+
+            <!-- Controls for Sequence 2 - MOVED TO TOP -->
+            <div class="sequence-controls">
+                <button id="playSequence2" class="btn btn-primary">▶ Play Q&A Demo</button>
+                <div class="sequence-indicators">
+                    <div class="indicator" data-sequence="2" data-stage="3"></div>
+                    <div class="indicator" data-sequence="2" data-stage="4"></div>
+                </div>
             </div>
 
             <!-- Stage 3: Q&A GUI Only -->
@@ -775,15 +784,6 @@
                         <source src="qa-slideshow-with-gui.mp4" type="video/mp4">
                         Your browser doesn't support video playback.
                     </video>
-                </div>
-            </div>
-
-            <!-- Controls for Sequence 2 -->
-            <div class="sequence-controls">
-                <button id="playSequence2" class="btn btn-primary">▶ Play Q&A Demo</button>
-                <div class="sequence-indicators">
-                    <div class="indicator" data-sequence="2" data-stage="3"></div>
-                    <div class="indicator" data-sequence="2" data-stage="4"></div>
                 </div>
             </div>
         </div>
