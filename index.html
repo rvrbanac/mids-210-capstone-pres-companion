@@ -577,6 +577,13 @@
             font-size: 0.95rem;
         }
 
+        .team-email {
+            color: var(--primary);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            font-weight: 500;
+        }
+
         /* Footer */
         footer {
             background: var(--dark-light);
@@ -772,9 +779,9 @@
             </div>
 
             <!-- Stage 3: Q&A GUI Only -->
-            <div id="stage3" class="demo-stage">
+            <div id="stage3" class="demo-stage active">
                 <div class="video-container-large">
-                    <video id="video3" muted playsinline loop preload="auto">
+                    <video id="video3" muted playsinline autoplay loop preload="auto">
                         <source src="qa-gui-only.mp4" type="video/mp4">
                         Your browser doesn't support video playback.
                     </video>
@@ -860,17 +867,19 @@
         
         <div class="team-grid fade-in">
             <div class="team-member">
-                <img src="jonathan-photo.jpg" alt="Jonathan" onerror="this.src='https://via.placeholder.com/150/667eea/ffffff?text=J'">
+                <img src="jonathan.jpeg" alt="Jonathan">
                 <h3>Jonathan</h3>
                 <p class="team-role">Engineering, Project Management, Infrastructure</p>
                 <p class="team-bio">Professional Background: Aerospace Engineering</p>
+                <p class="team-email">jonathan.l.yi@berkeley.edu</p>
             </div>
             
             <div class="team-member">
-                <img src="ross-photo.jpg" alt="Ross Vrbanac" onerror="this.src='https://via.placeholder.com/150/FDB515/ffffff?text=R'">
+                <img src="ross.jpeg" alt="Ross Vrbanac">
                 <h3>Ross Vrbanac</h3>
                 <p class="team-role">Model Tuning, Engineering, Infrastructure</p>
                 <p class="team-bio">Professional Background: Institutional Investments</p>
+                <p class="team-email">rvrbanac@berkeley.edu</p>
             </div>
         </div>
     </section>
@@ -879,9 +888,7 @@
     <footer>
         <p>&copy; 2025 Presentation Companion | UC Berkeley MIDS Capstone</p>
         <div class="footer-links">
-            <a href="https://github.com/yourusername/presentation-companion">GitHub</a>
             <a href="#demo">Watch Demo</a>
-            <a href="/cdn-cgi/l/email-protection#88ebe7e6fce9ebfcc8edf0e9e5f8e4eda6ebe7e5">Contact</a>
         </div>
     </footer>
 
@@ -932,26 +939,17 @@
         const playSequence1Btn = document.getElementById('playSequence1');
         const playSequence2Btn = document.getElementById('playSequence2');
 
-        function goToStage(stageNum) {
-            const stages = document.querySelectorAll('.demo-stage');
-            const allIndicators = document.querySelectorAll('.indicator');
-            
-            stages.forEach(stage => stage.classList.remove('active'));
-            allIndicators.forEach(ind => ind.classList.remove('active'));
-            
-            const targetStage = document.getElementById(`stage${stageNum}`);
-            if (targetStage) {
-                targetStage.classList.add('active');
-                const targetIndicator = document.querySelector(`.indicator[data-stage="${stageNum}"]`);
-                if (targetIndicator) targetIndicator.classList.add('active');
-            }
-        }
-
+        // Play Sequence 1 (Navigation) - only controls stages 1 and 2
         async function playSequence1() {
             playSequence1Btn.textContent = 'Playing...';
             playSequence1Btn.disabled = true;
 
-            goToStage(1);
+            // Show stage 1
+            document.getElementById('stage1').classList.add('active');
+            document.getElementById('stage2').classList.remove('active');
+            document.querySelector('.indicator[data-stage="1"]').classList.add('active');
+            document.querySelector('.indicator[data-stage="2"]').classList.remove('active');
+
             if (video1) {
                 video1.currentTime = 0;
                 await video1.play().catch(e => console.log(e));
@@ -960,7 +958,12 @@
 
             await new Promise(resolve => setTimeout(resolve, 500));
 
-            goToStage(2);
+            // Show stage 2
+            document.getElementById('stage1').classList.remove('active');
+            document.getElementById('stage2').classList.add('active');
+            document.querySelector('.indicator[data-stage="1"]').classList.remove('active');
+            document.querySelector('.indicator[data-stage="2"]').classList.add('active');
+
             if (video2) {
                 video2.currentTime = 0;
                 await video2.play().catch(e => console.log(e));
@@ -969,13 +972,25 @@
 
             playSequence1Btn.textContent = '↻ Replay Navigation Demo';
             playSequence1Btn.disabled = false;
+
+            // Return to stage 1
+            document.getElementById('stage2').classList.remove('active');
+            document.getElementById('stage1').classList.add('active');
+            document.querySelector('.indicator[data-stage="2"]').classList.remove('active');
+            document.querySelector('.indicator[data-stage="1"]').classList.add('active');
         }
 
+        // Play Sequence 2 (Q&A) - only controls stages 3 and 4
         async function playSequence2() {
             playSequence2Btn.textContent = 'Playing...';
             playSequence2Btn.disabled = true;
 
-            goToStage(3);
+            // Show stage 3
+            document.getElementById('stage3').classList.add('active');
+            document.getElementById('stage4').classList.remove('active');
+            document.querySelector('.indicator[data-stage="3"]').classList.add('active');
+            document.querySelector('.indicator[data-stage="4"]').classList.remove('active');
+
             if (video3) {
                 video3.currentTime = 0;
                 await video3.play().catch(e => console.log(e));
@@ -984,7 +999,12 @@
 
             await new Promise(resolve => setTimeout(resolve, 500));
 
-            goToStage(4);
+            // Show stage 4
+            document.getElementById('stage3').classList.remove('active');
+            document.getElementById('stage4').classList.add('active');
+            document.querySelector('.indicator[data-stage="3"]').classList.remove('active');
+            document.querySelector('.indicator[data-stage="4"]').classList.add('active');
+
             if (video4) {
                 video4.currentTime = 0;
                 await video4.play().catch(e => console.log(e));
@@ -993,6 +1013,12 @@
 
             playSequence2Btn.textContent = '↻ Replay Q&A Demo';
             playSequence2Btn.disabled = false;
+
+            // Return to stage 3
+            document.getElementById('stage4').classList.remove('active');
+            document.getElementById('stage3').classList.add('active');
+            document.querySelector('.indicator[data-stage="4"]').classList.remove('active');
+            document.querySelector('.indicator[data-stage="3"]').classList.add('active');
         }
 
         if (playSequence1Btn) {
@@ -1003,10 +1029,40 @@
             playSequence2Btn.addEventListener('click', playSequence2);
         }
 
-        document.querySelectorAll('.indicator').forEach(indicator => {
+        // Indicator click handlers for manual navigation
+        document.querySelectorAll('.indicator[data-stage="1"]').forEach(indicator => {
             indicator.addEventListener('click', () => {
-                const stage = parseInt(indicator.getAttribute('data-stage'));
-                goToStage(stage);
+                document.getElementById('stage1').classList.add('active');
+                document.getElementById('stage2').classList.remove('active');
+                indicator.classList.add('active');
+                document.querySelector('.indicator[data-stage="2"]').classList.remove('active');
+            });
+        });
+
+        document.querySelectorAll('.indicator[data-stage="2"]').forEach(indicator => {
+            indicator.addEventListener('click', () => {
+                document.getElementById('stage2').classList.add('active');
+                document.getElementById('stage1').classList.remove('active');
+                indicator.classList.add('active');
+                document.querySelector('.indicator[data-stage="1"]').classList.remove('active');
+            });
+        });
+
+        document.querySelectorAll('.indicator[data-stage="3"]').forEach(indicator => {
+            indicator.addEventListener('click', () => {
+                document.getElementById('stage3').classList.add('active');
+                document.getElementById('stage4').classList.remove('active');
+                indicator.classList.add('active');
+                document.querySelector('.indicator[data-stage="4"]').classList.remove('active');
+            });
+        });
+
+        document.querySelectorAll('.indicator[data-stage="4"]').forEach(indicator => {
+            indicator.addEventListener('click', () => {
+                document.getElementById('stage4').classList.add('active');
+                document.getElementById('stage3').classList.remove('active');
+                indicator.classList.add('active');
+                document.querySelector('.indicator[data-stage="3"]').classList.remove('active');
             });
         });
     </script>
