@@ -744,7 +744,7 @@
             <!-- Stage 1: GUI Only -->
             <div id="stage1" class="demo-stage active">
                 <div class="video-container-large">
-                    <video id="video1" muted playsinline autoplay preload="auto">
+                    <video id="video1" muted playsinline preload="auto">
                         <source src="gui-only-demo.mp4" type="video/mp4">
                         Your browser doesn't support video playback.
                     </video>
@@ -781,7 +781,7 @@
             <!-- Stage 3: Q&A GUI Only -->
             <div id="stage3" class="demo-stage active">
                 <div class="video-container-large">
-                    <video id="video3" muted playsinline autoplay preload="auto">
+                    <video id="video3" muted playsinline preload="auto">
                         <source src="qa-gui-only.mp4" type="video/mp4">
                         Your browser doesn't support video playback.
                     </video>
@@ -868,7 +868,7 @@
                 <h3>Jonathan</h3>
                 <p class="team-role">Engineering, Project Management, Infrastructure</p>
                 <p class="team-bio">Professional Background: Aerospace Engineering</p>
-                <p class="team-email">jonathan.l.yi@berkeley.edu</p>
+                <p class="team-email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f09a9f9e918498919ede9cde8999b09295829b959c9589de959485">[email&#160;protected]</a></p>
             </div>
             
             <div class="team-member">
@@ -876,7 +876,7 @@
                 <h3>Ross Vrbanac</h3>
                 <p class="team-role">Model Tuning, Engineering, Infrastructure</p>
                 <p class="team-bio">Professional Background: Institutional Investments</p>
-                <p class="team-email">rvrbanac@berkeley.edu</p>
+                <p class="team-email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b6c4c0c4d4d7d8d7d5f6d4d3c4ddd3dad3cf98d3d2c3">[email&#160;protected]</a></p>
             </div>
         </div>
     </section>
@@ -889,7 +889,7 @@
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Fade in animation on scroll
         const observerOptions = {
             threshold: 0.1,
@@ -1077,6 +1077,14 @@
             });
         }
 
+        // Start both sequences playing on page load
+        if (video1) {
+            video1.play().catch(e => console.log(e));
+        }
+        if (video3) {
+            video3.play().catch(e => console.log(e));
+        }
+
         // Indicator click handlers for manual navigation
         document.querySelectorAll('.indicator[data-stage="1"]').forEach(indicator => {
             indicator.addEventListener('click', () => {
@@ -1099,11 +1107,4 @@
         document.querySelectorAll('.indicator[data-stage="3"]').forEach(indicator => {
             indicator.addEventListener('click', () => {
                 document.getElementById('stage3').classList.add('active');
-                document.getElementById('stage4').classList.remove('active');
-                indicator.classList.add('active');
-                document.querySelector('.indicator[data-stage="4"]').classList.remove('active');
-            });
-        });
-
-        document.querySelectorAll('.indicator[data-stage="4"]').forEach(indicator => {
-            indicator.addEventListener('click', () => 
+                document.getElement
