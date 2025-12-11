@@ -79,11 +79,22 @@
 
         .video-container-large {
             width: 100%;
-            max-width: 1000px;
             margin: 0 auto;
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        /* GUI videos - portrait/vertical ratio */
+        #stage1 .video-container-large,
+        #stage3 .video-container-large {
+            max-width: 450px;
+        }
+
+        /* Slideshow videos - landscape ratio */
+        #stage2 .video-container-large,
+        #stage4 .video-container-large {
+            max-width: 1000px;
         }
 
         .video-container-large video {
