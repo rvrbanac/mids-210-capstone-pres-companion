@@ -43,30 +43,53 @@
             opacity: 1;
         }
 
-        /* Stage 1: Vertical layout with text on top */
-        .stage-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        /* Demo Section Sequences */
+        .demo-sequence {
             margin-bottom: 4rem;
-            max-width: 1000px;
+        }
+
+        .sequence-text {
+            text-align: center;
+            margin-bottom: 3rem;
+            max-width: 900px;
             margin-left: auto;
             margin-right: auto;
         }
 
-        .text-side {
-            width: 100%;
-            text-align: center;
-            margin-bottom: 3rem;
+        .sequence-text h3 {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
         }
 
-        .video-side {
-            width: 100%;
-            max-width: 900px;
+        .sequence-text p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: var(--text);
         }
-        
-        .video-side .demo-video {
-            transform: scale(1);
+
+        .demo-stage {
+            display: none;
+        }
+
+        .demo-stage.active {
+            display: block;
+        }
+
+        .video-container-large {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .video-container-large video {
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
         .demo-text h3 {
@@ -113,37 +136,6 @@
         .text-above {
             text-align: center;
             margin-bottom: 3rem;
-        }
-
-        .morphing-container {
-            position: relative;
-            width: 100%;
-        }
-
-        .slide-video {
-            width: 100%;
-            height: 100%;
-        }
-
-        .gui-video-small {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 350px;
-            opacity: 0;
-            transform: scale(2.5) translateX(-150%);
-            transition: all 1.5s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 10;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
-        }
-
-        /* Morphing animation trigger */
-        #stage2.active .gui-video-small,
-        #stage4.active .gui-video-small {
-            opacity: 1;
-            transform: scale(1) translateX(0);
         }
 
         .text-above h3,
@@ -211,18 +203,6 @@
             .stage-content {
                 grid-template-columns: 1fr;
                 gap: 2rem;
-            }
-
-            .gui-video-small {
-                position: static;
-                width: 100%;
-                margin-top: 2rem;
-                transform: scale(1);
-            }
-
-            #stage2.active .gui-video-small,
-            #stage4.active .gui-video-small {
-                transform: scale(1);
             }
         }
 
@@ -723,126 +703,77 @@
         <h2 class="section-title">See It In Action</h2>
         <p class="section-subtitle">Watch how Presentation Companion works in real-time</p>
         
-        <!-- Stage 1: GUI Only Video -->
-        <div id="stage1" class="demo-stage active">
-            <div class="stage-content">
-                <div class="text-side">
-                    <div class="demo-text fade-in-text">
-                        <h3>Real-Time Speech Analysis</h3>
-                        <p>Presentation Companion analyzes your speech in real-time, assessing when your slides should flip based on semantic similarity and contextual understanding.</p>
-                    </div>
+        <!-- SEQUENCE 1: SLIDE NAVIGATION -->
+        <div class="demo-sequence">
+            <div class="sequence-text">
+                <h3>Real-Time Automatic Slide Navigation</h3>
+                <p>Presentation Companion analyzes your speech in real-time. Your presentation automatically advances—no clicks, no commands, just natural flow.</p>
+            </div>
+
+            <!-- Stage 1: GUI Only -->
+            <div id="stage1" class="demo-stage active">
+                <div class="video-container-large">
+                    <video id="video1" muted playsinline autoplay loop preload="auto">
+                        <source src="gui-only-demo.mp4" type="video/mp4">
+                        Your browser doesn't support video playback.
+                    </video>
                 </div>
-                <div class="video-side">
-                    <div class="demo-video" id="video1Container">
-                        <div class="video-container">
-                            <video id="video1" muted playsinline autoplay loop>
-                                <source src="gui-only-demo.mp4" type="video/mp4">
-                                Your browser doesn't support video playback.
-                            </video>
-                        </div>
-                    </div>
+            </div>
+
+            <!-- Stage 2: Slideshow with GUI -->
+            <div id="stage2" class="demo-stage">
+                <div class="video-container-large">
+                    <video id="video2" muted playsinline preload="auto">
+                        <source src="slideshow-with-gui.mp4" type="video/mp4">
+                        Your browser doesn't support video playback.
+                    </video>
+                </div>
+            </div>
+
+            <!-- Controls for Sequence 1 -->
+            <div class="sequence-controls">
+                <button id="playSequence1" class="btn btn-primary">▶ Play Navigation Demo</button>
+                <div class="sequence-indicators">
+                    <div class="indicator active" data-sequence="1" data-stage="1"></div>
+                    <div class="indicator" data-sequence="1" data-stage="2"></div>
                 </div>
             </div>
         </div>
 
-        <!-- Stage 2: Morphing Transition + Both Videos -->
-        <div id="stage2" class="demo-stage">
-            <div class="stage-content-full">
-                <div class="text-above">
-                    <div class="demo-text fade-in-text">
-                        <h3>Automatic Slide Navigation</h3>
-                        <p>Your presentation automatically advances—no clicks, no commands, just natural flow.</p>
-                    </div>
-                </div>
-                <div class="morphing-container">
-                    <div class="slide-video" id="slideVideoContainer">
-                        <div class="demo-video">
-                            <div class="video-container">
-                                <video id="video2" muted playsinline autoplay preload="auto">
-                                    <source src="slideshow-with-gui.mp4" type="video/mp4">
-                                    Your browser doesn't support video playback.
-                                </video>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gui-video-small" id="guiVideoSmall">
-                        <div class="demo-video">
-                            <div class="video-container">
-                                <video id="video1Clone" muted playsinline loop autoplay>
-                                    <source src="gui-only-demo.mp4" type="video/mp4">
-                                    Your browser doesn't support video playback.
-                                </video>
-                            </div>
-                        </div>
-                    </div>
+        <!-- SEQUENCE 2: QUESTION MODE -->
+        <div class="demo-sequence" style="margin-top: 6rem;">
+            <div class="sequence-text">
+                <h3>Question Mode</h3>
+                <p>Questions are automatically detected and answers are retrieved from your document database using RAG. Q&A sessions can be transcribed in real-time.</p>
+            </div>
+
+            <!-- Stage 3: Q&A GUI Only -->
+            <div id="stage3" class="demo-stage">
+                <div class="video-container-large">
+                    <video id="video3" muted playsinline loop preload="auto">
+                        <source src="qa-gui-only.mp4" type="video/mp4">
+                        Your browser doesn't support video playback.
+                    </video>
                 </div>
             </div>
-        </div>
 
-        <!-- Stage 3: Question Mode GUI Only -->
-        <div id="stage3" class="demo-stage">
-            <div class="stage-content">
-                <div class="text-side">
-                    <div class="demo-text fade-in-text">
-                        <h3>Question Mode</h3>
-                        <p>The system automatically detects questions and retrieves answers from your document database using RAG.</p>
-                    </div>
-                </div>
-                <div class="video-side">
-                    <div class="demo-video" id="video3Container">
-                        <div class="video-container">
-                            <video id="video3" muted playsinline autoplay loop>
-                                <source src="qa-gui-only.mp4" type="video/mp4">
-                                Your browser doesn't support video playback.
-                            </video>
-                        </div>
-                    </div>
+            <!-- Stage 4: Q&A Slideshow with GUI -->
+            <div id="stage4" class="demo-stage">
+                <div class="video-container-large">
+                    <video id="video4" muted playsinline preload="auto">
+                        <source src="qa-slideshow-with-gui.mp4" type="video/mp4">
+                        Your browser doesn't support video playback.
+                    </video>
                 </div>
             </div>
-        </div>
 
-        <!-- Stage 4: Question Mode with Slide -->
-        <div id="stage4" class="demo-stage">
-            <div class="stage-content-full">
-                <div class="text-above">
-                    <div class="demo-text fade-in-text">
-                        <h3>Live Q&A Transcription</h3>
-                        <p>Questions and answers appear instantly on your slides with smooth typing animations, creating an engaging audience experience.</p>
-                    </div>
+            <!-- Controls for Sequence 2 -->
+            <div class="sequence-controls">
+                <button id="playSequence2" class="btn btn-primary">▶ Play Q&A Demo</button>
+                <div class="sequence-indicators">
+                    <div class="indicator" data-sequence="2" data-stage="3"></div>
+                    <div class="indicator" data-sequence="2" data-stage="4"></div>
                 </div>
-                <div class="morphing-container">
-                    <div class="slide-video" id="qaSlideVideoContainer">
-                        <div class="demo-video">
-                            <div class="video-container">
-                                <video id="video4" muted playsinline autoplay preload="auto">
-                                    <source src="qa-slideshow-with-gui.mp4" type="video/mp4">
-                                    Your browser doesn't support video playback.
-                                </video>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gui-video-small" id="qaGuiVideoSmall">
-                        <div class="demo-video">
-                            <div class="video-container">
-                                <video id="video3Clone" muted playsinline loop autoplay>
-                                    <source src="qa-gui-only.mp4" type="video/mp4">
-                                    Your browser doesn't support video playback.
-                                </video>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Navigation Controls -->
-        <div class="sequence-controls">
-            <button id="playSequence" class="btn btn-primary">▶ Play Full Demo Sequence</button>
-            <div class="sequence-indicators">
-                <div class="indicator active" data-stage="1"></div>
-                <div class="indicator" data-stage="2"></div>
-                <div class="indicator" data-stage="3"></div>
-                <div class="indicator" data-stage="4"></div>
             </div>
         </div>
     </section>
@@ -979,112 +910,89 @@
         });
 
         // Demo Sequence Controller
-        let currentStage = 1;
-        const playSequenceBtn = document.getElementById('playSequence');
-        const stage1 = document.getElementById('stage1');
-        const stage2 = document.getElementById('stage2');
-        const stage3 = document.getElementById('stage3');
-        const stage4 = document.getElementById('stage4');
         const video1 = document.getElementById('video1');
-        const video1Clone = document.getElementById('video1Clone');
         const video2 = document.getElementById('video2');
         const video3 = document.getElementById('video3');
-        const video3Clone = document.getElementById('video3Clone');
         const video4 = document.getElementById('video4');
-        const indicators = document.querySelectorAll('.indicator');
+        const playSequence1Btn = document.getElementById('playSequence1');
+        const playSequence2Btn = document.getElementById('playSequence2');
 
         function goToStage(stageNum) {
-            currentStage = stageNum;
+            const stages = document.querySelectorAll('.demo-stage');
+            const allIndicators = document.querySelectorAll('.indicator');
             
-            // Hide all stages
-            [stage1, stage2, stage3, stage4].forEach(stage => {
-                if (stage) stage.classList.remove('active');
-            });
+            stages.forEach(stage => stage.classList.remove('active'));
+            allIndicators.forEach(ind => ind.classList.remove('active'));
             
-            // Show current stage
-            if (stageNum === 1 && stage1) stage1.classList.add('active');
-            else if (stageNum === 2 && stage2) stage2.classList.add('active');
-            else if (stageNum === 3 && stage3) stage3.classList.add('active');
-            else if (stageNum === 4 && stage4) stage4.classList.add('active');
-
-            // Update indicators
-            indicators.forEach((ind, idx) => {
-                if (idx + 1 === stageNum) {
-                    ind.classList.add('active');
-                } else {
-                    ind.classList.remove('active');
-                }
-            });
-
-            // Scroll to demo section
-            document.getElementById('demo').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            const targetStage = document.getElementById(`stage${stageNum}`);
+            if (targetStage) {
+                targetStage.classList.add('active');
+                const targetIndicator = document.querySelector(`.indicator[data-stage="${stageNum}"]`);
+                if (targetIndicator) targetIndicator.classList.add('active');
+            }
         }
 
-        async function playFullSequence() {
-            playSequenceBtn.textContent = 'Playing...';
-            playSequenceBtn.disabled = true;
+        async function playSequence1() {
+            playSequence1Btn.textContent = 'Playing...';
+            playSequence1Btn.disabled = true;
 
-            // Stage 1: Navigation GUI only
             goToStage(1);
             if (video1) {
                 video1.currentTime = 0;
                 await video1.play().catch(e => console.log(e));
-                await new Promise(resolve => setTimeout(resolve, Math.min(video1.duration * 1000, 8000)));
-                video1.pause();
+                await new Promise(resolve => setTimeout(resolve, 8000));
             }
 
             await new Promise(resolve => setTimeout(resolve, 500));
 
-            // Stage 2: Navigation morph to slideshow
             goToStage(2);
-            if (video1Clone && video2) {
-                video1Clone.currentTime = 0;
+            if (video2) {
                 video2.currentTime = 0;
-                await Promise.all([
-                    video1Clone.play().catch(e => console.log(e)),
-                    video2.play().catch(e => console.log(e))
-                ]);
+                await video2.play().catch(e => console.log(e));
                 await new Promise(resolve => setTimeout(resolve, Math.min(video2.duration * 1000, 10000)));
-                video1Clone.pause();
-                video2.pause();
             }
 
-            await new Promise(resolve => setTimeout(resolve, 1000));
+            playSequence1Btn.textContent = '↻ Replay Navigation Demo';
+            playSequence1Btn.disabled = false;
+        }
 
-            // Stage 3: Q&A GUI only
+        async function playSequence2() {
+            playSequence2Btn.textContent = 'Playing...';
+            playSequence2Btn.disabled = true;
+
             goToStage(3);
             if (video3) {
                 video3.currentTime = 0;
                 await video3.play().catch(e => console.log(e));
-                await new Promise(resolve => setTimeout(resolve, Math.min(video3.duration * 1000, 8000)));
-                video3.pause();
+                await new Promise(resolve => setTimeout(resolve, 8000));
             }
 
             await new Promise(resolve => setTimeout(resolve, 500));
 
-            // Stage 4: Q&A morph to slideshow
             goToStage(4);
-            if (video3Clone && video4) {
-                video3Clone.currentTime = 0;
+            if (video4) {
                 video4.currentTime = 0;
-                await Promise.all([
-                    video3Clone.play().catch(e => console.log(e)),
-                    video4.play().catch(e => console.log(e))
-                ]);
+                await video4.play().catch(e => console.log(e));
+                await new Promise(resolve => setTimeout(resolve, Math.min(video4.duration * 1000, 12000)));
             }
 
-            setTimeout(() => {
-                playSequenceBtn.textContent = '↻ Replay Full Sequence';
-                playSequenceBtn.disabled = false;
-            }, 2000);
+            playSequence2Btn.textContent = '↻ Replay Q&A Demo';
+            playSequence2Btn.disabled = false;
         }
 
-        if (playSequenceBtn) {
-            playSequenceBtn.addEventListener('click', playFullSequence);
+        if (playSequence1Btn) {
+            playSequence1Btn.addEventListener('click', playSequence1);
         }
 
-        indicators.forEach((indicator, idx) => {
-            indicator.addEventListener('click', () => goToStage(idx + 1));
+        if (playSequence2Btn) {
+            playSequence2Btn.addEventListener('click', playSequence2);
+        }
+
+        document.querySelectorAll('.indicator').forEach(indicator => {
+            indicator.addEventListener('click', () => {
+                const stage = parseInt(indicator.getAttribute('data-stage'));
+                goToStage(stage);
+            });
         });
     </script>
 </body>
