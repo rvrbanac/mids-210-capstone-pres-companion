@@ -263,45 +263,6 @@
             font-weight: 300;
         }
 
-        .cta-buttons {
-            display: none; /* Hidden buttons */
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 1rem 2.5rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border-radius: 50px;
-            text-decoration: none;
-            transition: all 0.3s;
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--text);
-            border: 2px solid var(--primary);
-        }
-
-        .btn-secondary:hover {
-            background: var(--primary);
-            transform: translateY(-2px);
-        }
-
         /* Section Styles */
         section {
             padding: 6rem 2rem;
@@ -464,22 +425,37 @@
             margin-bottom: 1rem;
         }
 
-        .footer-links {
-            display: flex;
-            gap: 2rem;
-            justify-content: center;
-            margin-top: 1.5rem;
-        }
-
-        .footer-links a {
-            color: var(--primary);
-            text-decoration: none;
+        /* Button styles kept for Demo Controls */
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
             font-weight: 600;
-            transition: color 0.3s;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
         }
 
-        .footer-links a:hover {
-            color: var(--accent);
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
         }
 
         /* Responsive */
@@ -536,7 +512,7 @@
         <div class="hero-content">
             <h1>Presentation Companion</h1>
             <p class="hero-subtitle">AI-powered real-time presentation assistant that navigates slides based on your speech, answers questions with RAG, and creates dynamic Q&A displays.</p>
-            </div>
+        </div>
     </section>
 
     <section id="demo">
@@ -649,7 +625,7 @@
             
             <div class="feature-card">
                 <h3>⚡ Contextual Nuance Recognition</h3>
-                <p>An added LLM decision layer understands the nuance and context of your speech, distinguishing between brief mentions and deep topic coverage to make intelligent navigation decisions.</p>
+                <p>An added LLM decision layer understands the nuance and context of your speech, allowing Presentation Companion to make intelligent navigation decisions.</p>
             </div>
         </div>
 
@@ -667,8 +643,6 @@
 
     <section id="team">
         <h2 class="section-title">The Team</h2>
-        <p class="section-subtitle">UC Berkeley MIDS Capstone Project</p>
-        
         <div class="team-grid">
             <div class="team-member">
                 <img src="jonathan.jpeg" alt="Jonathan">
@@ -690,10 +664,7 @@
 
     <footer>
         <p>&copy; 2025 Presentation Companion | UC Berkeley MIDS Capstone</p>
-        <div class="footer-links">
-            <a href="#demo">Watch Demo</a>
-        </div>
-    </footer>
+        </footer>
 
     <script>
         // --- 1. General UI Animations (Fade in & Smooth Scroll) ---
