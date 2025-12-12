@@ -441,6 +441,16 @@
             font-weight: 500;
         }
 
+        .team-email a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .team-email a:hover {
+            color: var(--accent);
+        }
+
         /* Footer */
         footer {
             background: var(--dark-light);
@@ -669,7 +679,7 @@
                 <h3>Jonathan</h3>
                 <p class="team-role">Engineering, Project Management, Infrastructure</p>
                 <p class="team-bio">Professional Background: Aerospace Engineering</p>
-                <p class="team-email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f09a9f9e918498919ede9cde8999b09295829b959c9589de959485">[email&#160;protected]</a></p>
+                <p class="team-email"><a href="mailto:jonathan.l.yi@berkeley.edu">jonathan.l.yi@berkeley.edu</a></p>
             </div>
             
             <div class="team-member">
@@ -677,7 +687,7 @@
                 <h3>Ross Vrbanac</h3>
                 <p class="team-role">Model Tuning, Engineering, Infrastructure</p>
                 <p class="team-bio">Professional Background: Institutional Investments</p>
-                <p class="team-email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b6c4c0c4d4d7d8d7d5f6d4d3c4ddd3dad3cf98d3d2c3">[email&#160;protected]</a></p>
+                <p class="team-email"><a href="mailto:rvrbanac@berkeley.edu">rvrbanac@berkeley.edu</a></p>
             </div>
         </div>
     </section>
@@ -689,7 +699,6 @@
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script>
         // --- 1. General UI Animations (Fade in & Smooth Scroll) ---
         const fadeObserver = new IntersectionObserver((entries) => {
